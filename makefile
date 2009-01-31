@@ -18,13 +18,11 @@
 
 MAKE = make	      # needed for some systems e.g. older BSD
 
-CC = cc
-CFLAGS =
+CC = gcc
+CFLAGS = -c -DGENERIC -DANSI_HDRS -DSTDARG -DBIG_MEM -DNDEBUG -Os -fomit-frame-pointer -fexpensive-optimizations -g0
 MODEL =
-EXTRA = -DBIG_MEM -DNDEBUG
-LINTFLAGS = -DLINT
-OPTIM = -O
-DESTDIR = /usr/local/bin
+EXTRA = 
+DESTDIR = /usr/bin
 
 #List of all object files created for Zoo
 ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
@@ -39,9 +37,7 @@ FIZOBJS = fiz.o addbfcrc.o portable.o crcdefs.o
 .c.o :
 	$(CC) $(CFLAGS) $(MODEL) $(EXTRA) $*.c
 
-all : 
-	@echo 'There is no default.  Please specify an appropriate target from'
-	@echo 'the makefile, or type "make help" for more information'
+all : zoo fiz
 
 help :
 	@echo "Possible targets are as follows.  Please examine the makefile"
@@ -92,27 +88,27 @@ generic:
 
 # Reasonably generic BSD 4.3
 bsd:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DBSD4_3" $(TARGETS)
+	$(MAKE) CFLAGS="-c  -DBSD4_3" $(TARGETS)
 
 # ULTRIX 4.1
 ultrix:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DULTRIX" $(TARGETS)
+	$(MAKE) CFLAGS="-c  -DULTRIX" $(TARGETS)
 
 # BSD with ANSI C - works on MIPS and Ultrix/RISC compilers
 bsdansi:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DBSD4_3 -DANSI_HDRS" $(TARGETS)
+	$(MAKE) CFLAGS="-c  -DBSD4_3 -DANSI_HDRS" $(TARGETS)
 
 # Convex C200 series
 convex:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DBSD4_3 -DANSI_HDRS" $(TARGETS)
+	$(MAKE) CFLAGS="-c  -DBSD4_3 -DANSI_HDRS" $(TARGETS)
 
 # SysV.2, V.3, SCO Xenix
 sysv:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DSYS_V" $(TARGETS)
+	$(MAKE) CFLAGS="-c  -DSYS_V" $(TARGETS)
 
 # DOS version cross compiled from SCO Xenix/UNIX
 scodos:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DTURBOC -DANSI_HDRS -DBIG_MEM" \
+	$(MAKE) CFLAGS="-c  -DTURBOC -DANSI_HDRS -DBIG_MEM" \
 		EXTRA="-dos -Ml" LDFLAGS="-o zoo.exe" $(TARGETS)
 
 # Tested for zoo 2.01 on: Xenix 3.4 on Greg Laskin's Intel 310/286;
@@ -121,7 +117,7 @@ scodos:
 # `-F xxxx' for xxxx (hex) bytes of stack space.
 xenix286:
 	@echo "Warning: xenix286 is not fully functional"
-	$(MAKE) CFLAGS="-c $(OPTIM) -DSYS_V" \
+	$(MAKE) CFLAGS="-c  -DSYS_V" \
 		MODEL="-Ml -M2 -Md" \
 		LDFLAGS="-s -n -Md -Mt500 -F 5000" $(TARGETS)
 
@@ -130,7 +126,7 @@ xenix286:
 # know about `void'.  `-s -n' strips and makes it shareable.  Used to work
 # with zoo 2.01; not tested with 2.1.
 xenix68k:
-	$(MAKE) CFLAGS="-c $(OPTIM) -DSYS_V -DM_VOID -Dvoid=int" \
+	$(MAKE) CFLAGS="-c  -DSYS_V -DM_VOID -Dvoid=int" \
 		LDFLAGS="-s -n" $(TARGETS)
 
 #######################################################################
@@ -139,7 +135,7 @@ xenix68k:
 
 # standard clean -- remove all transient files
 clean :
-	rm -f core a.out $(ZOOOBJS) $(FIZOBJS)
+	rm -f core a.out $(ZOOOBJS) $(FIZOBJS) zoo fiz
 
 # object clean only -- just remove object files
 objclean:
@@ -154,34 +150,6 @@ zoo: $(ZOOOBJS)
 
 fiz: $(FIZOBJS)
 	$(CC) -o fiz $(MODEL) $(LDFLAGS) $(FIZOBJS)
-
-#######################################################################
-# SELECTED TARGETS FOR LINT
-#######################################################################
-
-# generic system V
-lint_sysv:
-	echo $(ZOOOBJS) | sed -e 's/\.o/.c/g' | \
-	xargs lint -DSYS_V $(EXTRA) $(LINTFLAGS) | \
-	grep -v 'possible pointer alignment problem'
-
-# generic BSD
-lint_bsd:
-	echo $(ZOOOBJS) | sed -e 's/\.o/.c/g' | \
-	xargs lint -DBSD4_3 $(EXTRA) $(LINTFLAGS) | \
-	grep -v 'possible pointer alignment problem'
-
-# generic **IX
-lint_generic:
-	echo $(ZOOOBJS) | sed -e 's/\.o/.c/g' | \
-	xargs lint -DGENERIC $(EXTRA) $(LINTFLAGS) | \
-	grep -v 'possible pointer alignment problem'
-
-# Cross-lint for checking Turbo C code under **IX.  For checking only;
-# compilation requires separate makefile called "makefile.tcc"
-lint_turboc:
-	echo $(ZOOOBJS) turboc.c | sed -e 's/\.o/.c/g' | \
-	xargs lint -DTURBOC -DCROSS_LINT $(EXTRA) $(LINTFLAGS)
 
 #######################################################################
 # DEPENDENCIES
@@ -235,7 +203,7 @@ parse.o: /usr/include/stdio.h assert.h options.h parse.h various.h zoo.h
 parse.o: zoofns.h zooio.h
 portable.o: /usr/include/stdio.h assert.h debug.h machine.h options.h
 portable.o: portable.h various.h zoo.h zoofns.h zooio.h
-prterror.o: /usr/include/stdio.h /usr/include/varargs.h options.h various.h
+prterror.o: /usr/include/stdio.h options.h various.h
 prterror.o: zoofns.h zooio.h
 sysv.o: /usr/include/sys/stat.h /usr/include/sys/types.h /usr/include/time.h
 sysv.o: nixmode.i nixtime.i

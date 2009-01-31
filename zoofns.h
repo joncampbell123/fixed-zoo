@@ -94,7 +94,7 @@ void exit PARMS ((int));
 void fixslash PARMS ((char *));
 void makelist PARMS ((int, char *[], char *[], int, char *, char *, char *, int *));
 void memerr PARMS ((unsigned int));
-void prterror PARMS ((int, char *, ...));
+void prterror (int, char *, ...);
 void rootname PARMS ((char *, char *));
 void skip_files PARMS ((ZOOFILE, unsigned int *, unsigned int *, int *,
                   char [], long *));
