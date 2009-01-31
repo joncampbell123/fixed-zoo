@@ -17,7 +17,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "zoo.h"
 #include "zoofns.h"     /* only for malloc */
 
-void makepath PARMS((char *));
+void makepath (char *);
 
 /**********************/
 /* memerr() */

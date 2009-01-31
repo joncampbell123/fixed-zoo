@@ -343,11 +343,3 @@ value is critical, so we compile in a runtime check. */
 # define CHECK_TUINT	/* will do runtime check for correct size */
 #endif
 
-/* ANSI compatibility in declarations -- see zoofns.h for usage */
-#ifndef PARMS
-# ifdef ANSI_PROTO
-#  define PARMS(x)		x
-# else
-#  define PARMS(x)		()
-# endif
-#endif

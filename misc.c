@@ -27,7 +27,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "portable.h"
 #endif
 
-int ver_too_high PARMS((struct zoo_header *));
+int ver_too_high (struct zoo_header *);
 
 /*
 calc_ofs() is given a string that (supposedly) begins with a string

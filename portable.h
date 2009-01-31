@@ -30,69 +30,41 @@ MKDIR(x) creates a directory x.
 
 /* Borland's Turbo C. */
 #ifdef   TURBOC
-/* options for zooopen(), zoocreate() */
-#define  Z_WRITE        "r+b"
-#define  Z_READ         "rb"
-#define  Z_RDWR         "r+b"
-#define	Z_NEW				"w+b"
-#define	zgetc(x)			getc(x)
-#define  zputc(c, f)		putc(c, f)
-#define	zputchar(c)		putchar(c)
-#define  MKDIR(x)       mkdir(x)
-int mkdir PARMS((char *));
+#error NO!
 #endif
 
 /* Microsoft C 3.0 */
 #ifdef   MSC
-/* options for zooopen(), zoocreate() */
-#define  Z_WRITE        "r+b"
-#define  Z_READ         "rb"
-#define  Z_RDWR         "r+b"
-#define	Z_NEW				"w+b"
-#define	zgetc(x)			getc(x)
-#define  zputc(c, f)		putc(c, f)
-#define	zputchar(c)		putchar(c)
-#define  MKDIR(x)       mkdir(x)
-int mkdir (char *);
+#error NO!
 #endif
 
 #ifdef VMS
-#define Z_WRITE		"r+"
-#define Z_READ			"r"
-#define Z_RDWR			"r+"
-#define	Z_NEW			"w+b"
-#define zgetc(x)	getc(x)
-#define  zputc(c, f)		putc(c, f)
-#define zputchar(c)	putchar(c)
-#define MKDIR(x)	vmsmkdir (x, 0)
+#error NO!
 #endif
 
 #ifdef GENERIC
-/* **IX I/O, but MKDIR() is a no-operation */
 #define  NIX_IO      /* standard **IX I/O */
-#define  MKDIR(x)
+#define  MKDIR(x) mkdir(x,0755)
 #endif
 
 /* **IX System V release 2.1 */
 #ifdef   SYS_V
-#define  NIX_IO      /* standard **IX I/O */
-#define  MKDIR(x)       mkdir(x) /* define this in sysv.c */
+#error NO!
 #endif
 
 /* Xenix */
 #ifdef   XENIX
-#define  NIX_IO      /* standard **IX I/O */
+#error NO!
 #endif
 
 /* 4.3BSD */
 #ifdef BSD4_3
-#define NIX_IO       /* standard **IX I/O */
-#define  MKDIR(x)       mkdir(x, 0777)
+#error NO!
 #endif
 
 /* Amiga */
 #ifdef MCH_AMIGA
-# include "MCH_AMIGA NEEDS REVISION"
+#error NO!
 #endif
 
 /* Standard **IX I/O definitions */
