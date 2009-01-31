@@ -32,7 +32,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include <signal.h>
 #endif
 
-char *mktemp PARMS((char *));
+char *mktemp(char *);
 
 struct zoo_header zoo_header = {
    TEXT,
@@ -50,7 +50,7 @@ char file_leader[] = FILE_LEADER;
 extern int quiet;
 int break_hit;
 
-int ver_too_high PARMS((struct zoo_header *));
+int ver_too_high(struct zoo_header *);
 
 void zoopack(zoo_path, option)
 char *zoo_path, *option;
@@ -81,12 +81,12 @@ static char partial_msg[] =
 
 #ifdef FATTR
 unsigned long zoofattr;							/* zoo archive protection */
-int setfattr PARMS ((char *, unsigned long));
+int setfattr(char *, unsigned long);
 unsigned long getfattr							/* params below */
 # ifdef FATTR_FNAME
-  PARMS ((char *));
+  (char *);
 # else
-  PARMS ((ZOOFILE));
+  (ZOOFILE);
 # endif /* FATTR_FNAME */
 #endif /* FATTR */
 

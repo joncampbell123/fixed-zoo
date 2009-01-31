@@ -1,8 +1,3 @@
-#ifndef LINT
-/* @(#) nixmode.i 1.2 88/01/24 12:48:57 */
-static char modeid[]="@(#) nixmode.i 1.2 88/01/24 12:48:57";
-#endif
-
 /*
 (C) Copyright 1988 Rahul Dhesi -- All rights reserved
 

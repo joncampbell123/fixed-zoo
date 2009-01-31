@@ -28,8 +28,8 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include <signal.h>
 #endif
 
-int needed PARMS((char *, struct direntry *, struct zoo_header *));
-int ver_too_high PARMS((struct zoo_header *));
+int needed (char *, struct direntry *, struct zoo_header *);
+int ver_too_high (struct zoo_header *);
 
 extern int quiet;
 

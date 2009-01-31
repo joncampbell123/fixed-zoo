@@ -27,18 +27,18 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 extern int break_hit;
 extern int quiet;
 
-void show_comment PARMS ((struct direntry *, ZOOFILE, int, char *));
-void dosname PARMS ((char *, char *));
-void modpath PARMS ((char *));
-void opts_add PARMS ((char *, int *, int *, int *, int *, int *, int *,
-               int *, int *, int *, int *, int *, int *, int *, int *));
-int ver_too_high PARMS ((struct zoo_header *));
-void get_comment PARMS ((struct direntry *, ZOOFILE, char *));
+void show_comment (struct direntry *, ZOOFILE, int, char *);
+void dosname (char *, char *);
+void modpath (char *);
+void opts_add (char *, int *, int *, int *, int *, int *, int *,
+               int *, int *, int *, int *, int *, int *, int *, int *);
+int ver_too_high (struct zoo_header *);
+void get_comment (struct direntry *, ZOOFILE, char *);
 #ifndef PORTABLE
-void copyfields PARMS ((struct direntry *, struct tiny_header *));
+void copyfields (struct direntry *, struct tiny_header *);
 #endif
-void storefname PARMS ((struct direntry *, char *, int));
-char *choosefname PARMS ((struct direntry *));
+void storefname (struct direntry *, char *, int);
+char *choosefname (struct direntry *);
 
 extern struct zoo_header zoo_header;
 
@@ -275,10 +275,10 @@ while (1) {
 			only the portable format is recognized */
 		{
 # ifdef FATTR_FNAME
-			unsigned long getfattr PARMS ((char *);
+			unsigned long getfattr (char *);
 			direntry.fattr = getfattr (this_path);
 # else
-			unsigned long getfattr PARMS ((ZOOFILE));
+			unsigned long getfattr (ZOOFILE);
 			direntry.fattr = getfattr (this_file);
 # endif /* FATTR_FNAME */
 		}
@@ -484,8 +484,8 @@ printf ("zooadd:  direntry.lfname = [%s]  direntry.dirname = [%s]\n",
       status = getfile (this_file, zoo_file, -1L, 1);
    } else {
 #ifdef UNBUF_IO	/* unbuffered I/O */
-		long lseek PARMS ((int, long, int));
-		long tell PARMS ((int));
+		long lseek (int, long, int);
+		long tell (int);
 		int this_fd, zoo_fd;
 #endif
 		if (use_lzh)

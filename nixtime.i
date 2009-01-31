@@ -1,6 +1,3 @@
-#ifndef LINT
-static char nixtimeid[]="@(#) nixtime.i 2.3 88/01/24 12:49:28";
-#endif /* LINT */
 
 /*
 Time handling routines for UNIX systems.  These are included by the file

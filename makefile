@@ -13,14 +13,12 @@
 # optimize option and may be set on the make command line to -O2 or 
 # whatever your compiler thinks is nice.
 #
-# To run lint, select an appropriate lint_* target (e.g. "make lint_sysv").
 
 
 MAKE = make	      # needed for some systems e.g. older BSD
 
 CC = gcc
 CFLAGS = -c -DGENERIC -DANSI_HDRS -DSTDARG -DBIG_MEM -DNDEBUG -Os -fomit-frame-pointer -fexpensive-optimizations -g0
-MODEL =
 EXTRA = 
 DESTDIR = /usr/bin
 
@@ -35,99 +33,9 @@ ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
 FIZOBJS = fiz.o addbfcrc.o portable.o crcdefs.o
 
 .c.o :
-	$(CC) $(CFLAGS) $(MODEL) $(EXTRA) $*.c
+	$(CC) $(CFLAGS) $(EXTRA) $*.c
 
 all : zoo fiz
-
-help :
-	@echo "Possible targets are as follows.  Please examine the makefile"
-	@echo "for more information."
-	@echo ' '
-	@echo "generic:      generic **IX environment, minimal functionlity"
-	@echo "bsd:          4.3BSD or reasonable equivalent"
-	@echo "bsdansi:      4.3BSD with ANSI C"
-	@echo "ultrix:       ULTRIX 4.1"
-	@echo "convex:       Convex C200 series"
-	@echo "sysv:         System V Release 2 or 3; or SCO Xenix"
-	@echo "scodos:       Cross-compiler under SCO Xenix/UNIX for MS-DOS"
-	@echo "xenix286:     Older Xenix/286 (not tested)"
-	@echo "xenix68k:     Xenix/68000 (not tested)"
-	@echo ' '
-	@echo "install:      Move zoo to $(DESTDIR)/tzoo (alpha test)"
-	@echo "inst_beta:    Move zoo to $(DESTDIR)/bzoo (beta test)"
-	@echo "inst_prod:    Move zoo to $(DESTDIR)/zoo  (production)"
-	@echo ' '
-	@echo "lint_sysv:    Run lint for System V"
-	@echo "lint_bsd:     Run lint for 4.3BSD"
-	@echo "lint_generic: Run lint for generic **IX"
-	@echo "lint_turboc:  Run lint under **IX for checking Turbo C/MSDOS code"
-
-# install alpha zoo as "tzoo"
-install:
-	mv zoo $(DESTDIR)/tzoo
-
-# install beta zoo as "bzoo"
-inst_beta:
-	mv zoo $(DESTDIR)/bzoo
-
-# install production zoo as "zoo"
-inst_prod:
-	mv zoo $(DESTDIR)/zoo
-
-# executable targets
-TARGETS = zoo fiz
-
-#######################################################################
-# SYSTEM-SPECIFIC TARGETS
-#######################################################################
-
-# A generic system -- may have less than full functionality.
-# Compile with -g, since debugging will probably be needed.
-generic:
-	$(MAKE) CFLAGS="-c -g -DGENERIC" $(TARGETS)
-
-# Reasonably generic BSD 4.3
-bsd:
-	$(MAKE) CFLAGS="-c  -DBSD4_3" $(TARGETS)
-
-# ULTRIX 4.1
-ultrix:
-	$(MAKE) CFLAGS="-c  -DULTRIX" $(TARGETS)
-
-# BSD with ANSI C - works on MIPS and Ultrix/RISC compilers
-bsdansi:
-	$(MAKE) CFLAGS="-c  -DBSD4_3 -DANSI_HDRS" $(TARGETS)
-
-# Convex C200 series
-convex:
-	$(MAKE) CFLAGS="-c  -DBSD4_3 -DANSI_HDRS" $(TARGETS)
-
-# SysV.2, V.3, SCO Xenix
-sysv:
-	$(MAKE) CFLAGS="-c  -DSYS_V" $(TARGETS)
-
-# DOS version cross compiled from SCO Xenix/UNIX
-scodos:
-	$(MAKE) CFLAGS="-c  -DTURBOC -DANSI_HDRS -DBIG_MEM" \
-		EXTRA="-dos -Ml" LDFLAGS="-o zoo.exe" $(TARGETS)
-
-# Tested for zoo 2.01 on: Xenix 3.4 on Greg Laskin's Intel 310/286;
-# SCO Xenix 2.2 on Robert Cliff's AT.
-# `-Ml' for large memory model, `-M2' to generate code for 80286 cpu,
-# `-F xxxx' for xxxx (hex) bytes of stack space.
-xenix286:
-	@echo "Warning: xenix286 is not fully functional"
-	$(MAKE) CFLAGS="-c  -DSYS_V" \
-		MODEL="-Ml -M2 -Md" \
-		LDFLAGS="-s -n -Md -Mt500 -F 5000" $(TARGETS)
-
-# Radio Shack Model 16 with Xenix/68000 3.01.01. "-DM_VOID" tells not 
-# to try to do a typedef of `void'. "-Dvoid=int" because compiler doesn't 
-# know about `void'.  `-s -n' strips and makes it shareable.  Used to work
-# with zoo 2.01; not tested with 2.1.
-xenix68k:
-	$(MAKE) CFLAGS="-c  -DSYS_V -DM_VOID -Dvoid=int" \
-		LDFLAGS="-s -n" $(TARGETS)
 
 #######################################################################
 # CLEANUP TARGETS
@@ -146,10 +54,10 @@ objclean:
 #######################################################################
 
 zoo: $(ZOOOBJS)
-	$(CC) -o zoo $(MODEL) $(LDFLAGS) $(ZOOOBJS)
+	$(CC) -o zoo $(LDFLAGS) $(ZOOOBJS)
 
 fiz: $(FIZOBJS)
-	$(CC) -o fiz $(MODEL) $(LDFLAGS) $(FIZOBJS)
+	$(CC) -o fiz $(LDFLAGS) $(FIZOBJS)
 
 #######################################################################
 # DEPENDENCIES
@@ -205,9 +113,6 @@ portable.o: /usr/include/stdio.h assert.h debug.h machine.h options.h
 portable.o: portable.h various.h zoo.h zoofns.h zooio.h
 prterror.o: /usr/include/stdio.h options.h various.h
 prterror.o: zoofns.h zooio.h
-sysv.o: /usr/include/sys/stat.h /usr/include/sys/types.h /usr/include/time.h
-sysv.o: nixmode.i nixtime.i
-turboc.o: /usr/include/signal.h /usr/include/stdio.h /usr/include/sys/signal.h
 vms.o: /usr/include/time.h
 vmstime.o: /usr/include/stdio.h
 zoo.o: /usr/include/stdio.h errors.i options.h various.h zoo.h zoofns.h

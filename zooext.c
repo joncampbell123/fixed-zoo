@@ -35,12 +35,12 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 # include <stdio.h>
 #endif
 
-void makepath PARMS((char *));
-int needed PARMS((char *, struct direntry *, struct zoo_header *));
-void putstr PARMS((char *));
+void makepath (char *);
+int needed (char *, struct direntry *, struct zoo_header *);
+void putstr (char *);
 
 #ifdef FATTR
-int setfattr PARMS ((char *, unsigned long));
+int setfattr (char *, unsigned long);
 #endif /* FATTR */
 
 extern int quiet;
@@ -415,7 +415,7 @@ while (1) {
 
 #ifndef PORTABLE
             if (fast_ext) {            /* fast ext -> create header */
-               void make_tnh PARMS((struct tiny_header *, struct direntry *));
+               void make_tnh (struct tiny_header *, struct direntry *);
                struct tiny_header tiny_header;
                make_tnh(&tiny_header, &direntry);
                zoowrite (this_file, (char *) &tiny_header, sizeof(tiny_header));
@@ -474,8 +474,8 @@ while (1) {
 #ifdef UNBUF_IO
 #include "ERROR"
 					/* NOT PORTABLE -- DO NOT TRY THIS AT HOME */
-					long lseek PARMS ((int, long, int));
-					long tell PARMS ((int));
+					long lseek (int, long, int);
+					long tell (int);
 					int this_fd, zoo_fd;
 			
 					/* get file descriptors */

@@ -30,7 +30,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "zoofns.h"
 
 #ifdef TRACE_LIST
-void show_dir PARMS ((struct direntry *direntry));
+void show_dir(struct direntry *direntry);
 static int trace_list = 0;
 #endif /* TRACE_LIST */
 
@@ -43,10 +43,10 @@ static char dbl_percent[] = "Archive %s:  %s";
 
 extern int quiet;				/* assumed initialized to zero */
 
-void show_comment PARMS((struct direntry *, ZOOFILE, int, char *));
-int ver_too_high PARMS((struct zoo_header *));
-int needed PARMS((char *, struct direntry *, struct zoo_header *));
-void printtz PARMS((int));
+void show_comment(struct direntry *, ZOOFILE, int, char *);
+int ver_too_high(struct zoo_header *);
+int needed(char *, struct direntry *, struct zoo_header *);
+void printtz(int);
 
 void zoolist (argv, option, argc)
 char **argv, *option;
@@ -207,7 +207,7 @@ if (fiz_ofs != 0L) {                /* if offset specified, start there */
 	if (need_acmt && talking)
 #endif
 	{
-		void show_acmt PARMS ((struct zoo_header *, ZOOFILE, int));
+		void show_acmt(struct zoo_header *, ZOOFILE, int);
 		show_acmt (&zoo_header, zoo_file, 0);		/* show archive comment */
 	}
 
