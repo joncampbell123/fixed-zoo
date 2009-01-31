@@ -12,7 +12,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "portable.h"
 #include "zooio.h"
 #include "various.h"
-#include "errors.i"
+#include "errors.h"
 #include "zoomem.h"
 #include "zoo.h"
 #include "zoofns.h"     /* only for malloc */

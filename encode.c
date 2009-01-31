@@ -20,7 +20,7 @@ extern char *out_buf_adr;
 
 #include <assert.h>
 
-#include "errors.i"
+#include "errors.h"
 
 FILE *lzh_infile;
 FILE *lzh_outfile;

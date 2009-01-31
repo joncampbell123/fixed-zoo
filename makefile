@@ -72,11 +72,11 @@ basename.o: zoo.h zoofns.h zooio.h
 bsd.o: /usr/include/sys/stat.h /usr/include/sys/time.h
 bsd.o: /usr/include/sys/types.h nixmode.i nixtime.i
 comment.o: /usr/include/signal.h /usr/include/stdio.h
-comment.o: /usr/include/sys/signal.h errors.i options.h portable.h various.h
+comment.o: /usr/include/sys/signal.h errors.h options.h portable.h various.h
 comment.o: zoo.h zoofns.h zooio.h
 crcdefs.o: options.h
 decode.o: /usr/include/stdio.h ar.h lzh.h options.h zoo.h
-encode.o: /usr/include/assert.h /usr/include/stdio.h ar.h errors.i lzh.h
+encode.o: /usr/include/assert.h /usr/include/stdio.h ar.h errors.h lzh.h
 encode.o: options.h zoo.h
 fiz.o: /usr/include/stdio.h options.h portable.h various.h zoo.h zoofns.h
 fiz.o: zooio.h
@@ -84,28 +84,28 @@ generic.o: /usr/include/sys/stat.h /usr/include/sys/types.h
 generic.o: /usr/include/time.h nixmode.i nixtime.i
 getfile.o: /usr/include/stdio.h options.h various.h zoo.h zoofns.h zooio.h
 getfile.o: zoomem.h
-huf.o: /usr/include/stdio.h ar.h errors.i lzh.h options.h zoo.h
-io.o: /usr/include/stdio.h ar.h errors.i lzh.h options.h portable.h zoo.h
+huf.o: /usr/include/stdio.h ar.h errors.h lzh.h options.h zoo.h
+io.o: /usr/include/stdio.h ar.h errors.h lzh.h options.h portable.h zoo.h
 io.o: zooio.h
 lzc.o: /usr/include/stdio.h assert.h debug.h lzconst.h options.h various.h
 lzc.o: zoo.h zoofns.h zooio.h zoomem.h
 lzd.o: /usr/include/stdio.h assert.h debug.h lzconst.h options.h various.h
 lzd.o: zoo.h zoofns.h zooio.h zoomem.h
-lzh.o: /usr/include/stdio.h ar.h errors.i options.h zoo.h
+lzh.o: /usr/include/stdio.h ar.h errors.h options.h zoo.h
 machine.o: /usr/include/stdio.h options.h various.h zoo.h zoofns.h zooio.h
-makelist.o: /usr/include/stdio.h assert.h debug.h errors.i options.h
+makelist.o: /usr/include/stdio.h assert.h debug.h errors.h options.h
 makelist.o: portable.h various.h zoo.h zoofns.h zooio.h
 maketbl.o: /usr/include/stdio.h ar.h lzh.h options.h zoo.h
 maketree.o: /usr/include/stdio.h ar.h lzh.h options.h zoo.h
 misc.o: /usr/include/signal.h /usr/include/stdio.h /usr/include/sys/signal.h
-misc.o: errors.i options.h portable.h various.h zoo.h zoofns.h zooio.h
-misc2.o: /usr/include/stdio.h errors.i options.h portable.h various.h zoo.h
+misc.o: errors.h options.h portable.h various.h zoo.h zoofns.h zooio.h
+misc2.o: /usr/include/stdio.h errors.h options.h portable.h various.h zoo.h
 misc2.o: zoofns.h zooio.h zoomem.h
-msdos.o: /usr/include/stdio.h errors.i options.h zoo.h zoofns.h zooio.h
+msdos.o: /usr/include/stdio.h errors.h options.h zoo.h zoofns.h zooio.h
 needed.o: /usr/include/stdio.h debug.h options.h portable.h various.h zoo.h
 needed.o: zoofns.h zooio.h
 nextfile.o: /usr/include/stdio.h options.h various.h zoo.h
-options.o: /usr/include/stdio.h errors.i options.h various.h zoo.h zoofns.h
+options.o: /usr/include/stdio.h errors.h options.h various.h zoo.h zoofns.h
 options.o: zooio.h
 parse.o: /usr/include/stdio.h assert.h options.h parse.h various.h zoo.h
 parse.o: zoofns.h zooio.h
@@ -115,20 +115,20 @@ prterror.o: /usr/include/stdio.h options.h various.h
 prterror.o: zoofns.h zooio.h
 vms.o: /usr/include/time.h
 vmstime.o: /usr/include/stdio.h
-zoo.o: /usr/include/stdio.h errors.i options.h various.h zoo.h zoofns.h
+zoo.o: /usr/include/stdio.h errors.h options.h various.h zoo.h zoofns.h
 zoo.o: zooio.h zoomem.h
-zooadd.o: /usr/include/stdio.h debug.h errors.i options.h parse.h portable.h
+zooadd.o: /usr/include/stdio.h debug.h errors.h options.h parse.h portable.h
 zooadd.o: various.h zoo.h zoofns.h zooio.h zoomem.h
-zooadd2.o: /usr/include/stdio.h assert.h debug.h errors.i options.h parse.h
+zooadd2.o: /usr/include/stdio.h assert.h debug.h errors.h options.h parse.h
 zooadd2.o: various.h zoo.h zoofns.h zooio.h
 zoodel.o: /usr/include/signal.h /usr/include/stdio.h /usr/include/sys/signal.h
-zoodel.o: errors.i options.h portable.h various.h zoo.h zoofns.h zooio.h
+zoodel.o: errors.h options.h portable.h various.h zoo.h zoofns.h zooio.h
 zooext.o: /usr/include/signal.h /usr/include/stdio.h /usr/include/sys/signal.h
-zooext.o: errors.i machine.h options.h parse.h portable.h various.h zoo.h
+zooext.o: errors.h machine.h options.h parse.h portable.h various.h zoo.h
 zooext.o: zoofns.h zooio.h
 zoofilt.o: options.h
-zoolist.o: /usr/include/stdio.h errors.i options.h portable.h various.h zoo.h
+zoolist.o: /usr/include/stdio.h errors.h options.h portable.h various.h zoo.h
 zoolist.o: zoofns.h zooio.h zoomem.h
 zoopack.o: /usr/include/signal.h /usr/include/stdio.h
-zoopack.o: /usr/include/sys/signal.h errors.i options.h portable.h various.h
+zoopack.o: /usr/include/sys/signal.h errors.h options.h portable.h various.h
 zoopack.o: zoo.h zoofns.h zooio.h

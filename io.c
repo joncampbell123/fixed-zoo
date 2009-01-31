@@ -19,7 +19,7 @@ Adapted from "ar" archiver written by Haruhiko Okumura.
 
 extern void prterror();
 
-#include "errors.i"
+#include "errors.h"
 
 #define JUST_LZH		/* for stand-alone compression */
 

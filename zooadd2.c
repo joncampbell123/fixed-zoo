@@ -16,7 +16,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "various.h"
 #include "zooio.h"
 #include "zoofns.h"
-#include "errors.i"
+#include "errors.h"
 #include "assert.h"
 #include "debug.h"
 #include "parse.h"

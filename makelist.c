@@ -10,7 +10,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 
 #include "options.h"
 #include "portable.h"
-#include "errors.i"
+#include "errors.h"
 #include "zoo.h"
 #include "zooio.h"
 #include "various.h"

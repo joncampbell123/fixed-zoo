@@ -24,7 +24,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 
 /* Lists files in archive */
 #include "zoo.h"
-#include "errors.i"
+#include "errors.h"
 #include "zooio.h"
 #include "various.h"
 #include "zoofns.h"

@@ -6,7 +6,7 @@ lzh compression and uncompression interface module
 #include "options.h"
 #include "zoo.h"
 #include "ar.h"
-#include "errors.i"
+#include "errors.h"
 
 FILE *arcfile;
 

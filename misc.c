@@ -15,7 +15,7 @@ Copyright (C) 1986, 1987 Rahul Dhesi -- All rights reserved
 #include "zooio.h"
 #include "various.h"
 
-#include "errors.i"
+#include "errors.h"
 #include "zoofns.h"
 #ifndef NOSIGNAL
 #include <signal.h>
