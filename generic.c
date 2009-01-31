@@ -80,10 +80,7 @@ long gettz()
 }
 
 /* Standard UNIX-compatible time functions */
-#include "nixtime.i"
-
-/* Standard UNIX-specific file attribute routines */
-#include "nixmode.h"
+#include "nixtime.h"
 
 /* Assume no file truncate system call.  Ok to be a no-op. */
 /*ARGSUSED*/

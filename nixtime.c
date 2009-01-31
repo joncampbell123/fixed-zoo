@@ -8,16 +8,18 @@ The contents of this file are hereby released to the public domain.
                                     -- Rahul Dhesi  1986/12/31
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
+#include "zooio.h"
+
 struct tm *localtime();
 
 /*****************
 Function gettime() gets the date and time of the file handle supplied.
 Date and time is in MSDOS format.
 */
-int gettime (file, date, time)
-ZOOFILE file;
-unsigned *date, *time;
-{
+int gettime (ZOOFILE file,unsigned *date, unsigned *time) {
    struct stat buf;           /* buffer to hold file information */
    struct tm *tm;             /* will hold year/month/day etc. */
 	int handle;
@@ -42,10 +44,7 @@ mstonix() that accepts MSDOS format time and returns **IX format time,
 and a function gettz() that returns the difference (localtime - gmt)
 in seconds, taking daylight savings time into account.
 */
-int setutime(path,date,time)
-char *path;
-unsigned int date, time;
-{
+int setutime(char *path,unsigned int date, unsigned int time) {
 	long mstonix();
 	long gettz();
 	long utimbuf[2];
@@ -58,9 +57,7 @@ Function mstonix() accepts an MSDOS format date and time and returns
 a **IX format time.  No adjustment is done for timezone.
 */
 
-long mstonix (date, time)
-unsigned int date, time;
-{
+long mstonix (unsigned int date,unsigned int time) {
    int year, month, day, hour, min, sec, daycount;
    long longtime;
    /* no. of days to beginning of month for each month */

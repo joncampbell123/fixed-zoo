@@ -28,7 +28,7 @@ ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
 		nextfile.o needed.o options.o parse.o portable.o prterror.o \
 		version.o zoo.o zooadd.o zooadd2.o zoodel.o zooext.o zoofilt.o \
 		zoolist.o zoopack.o io.o lzh.o maketbl.o maketree.o huf.o \
-		encode.o decode.o
+		encode.o decode.o nixtime.o
 
 FIZOBJS = fiz.o addbfcrc.o portable.o crcdefs.o
 
