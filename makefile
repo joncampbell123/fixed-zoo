@@ -70,7 +70,7 @@ addfname.o: zoomem.h
 basename.o: /usr/include/stdio.h assert.h debug.h options.h parse.h various.h
 basename.o: zoo.h zoofns.h zooio.h
 bsd.o: /usr/include/sys/stat.h /usr/include/sys/time.h
-bsd.o: /usr/include/sys/types.h nixmode.i nixtime.i
+bsd.o: /usr/include/sys/types.h nixmode.i nixtime.h nixtime.c
 comment.o: /usr/include/signal.h /usr/include/stdio.h
 comment.o: /usr/include/sys/signal.h errors.h options.h portable.h various.h
 comment.o: zoo.h zoofns.h zooio.h
@@ -81,7 +81,7 @@ encode.o: options.h zoo.h
 fiz.o: /usr/include/stdio.h options.h portable.h various.h zoo.h zoofns.h
 fiz.o: zooio.h
 generic.o: /usr/include/sys/stat.h /usr/include/sys/types.h
-generic.o: /usr/include/time.h nixmode.i nixtime.i
+generic.o: /usr/include/time.h nixmode.i nixtime.h nixtime.c
 getfile.o: /usr/include/stdio.h options.h various.h zoo.h zoofns.h zooio.h
 getfile.o: zoomem.h
 huf.o: /usr/include/stdio.h ar.h errors.h lzh.h options.h zoo.h
