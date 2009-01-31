@@ -83,7 +83,7 @@ long gettz()
 #include "nixtime.i"
 
 /* Standard UNIX-specific file attribute routines */
-#include "nixmode.i"
+#include "nixmode.h"
 
 /* Assume no file truncate system call.  Ok to be a no-op. */
 /*ARGSUSED*/
