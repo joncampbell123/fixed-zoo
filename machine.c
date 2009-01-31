@@ -22,7 +22,7 @@ The contents of this file are hereby released to the public domain.
 /***********************************************************************/
 
 #ifdef UNBUF_IO
-int write PARMS ((int, VOIDPTR, unsigned));
+int write (int, VOIDPTR, unsigned);
 
 /*
 blockwrite() is like write() except that it ignores all

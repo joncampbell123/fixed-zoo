@@ -39,10 +39,10 @@ portable and should not be used without extensive testing.
 */
 
 #ifdef UNBUF_IO
-int read PARMS ((int, VOIDPTR, unsigned));
-int write PARMS ((int, VOIDPTR, unsigned));
-long lseek PARMS ((int, long, int));
-long tell PARMS ((int));
+int read (int, VOIDPTR, unsigned);
+int write (int, VOIDPTR, unsigned);
+long lseek (int, long, int);
+long tell (int);
 #endif /* UNBUF_IO */
 
 #include "zoo.h"		/* satisfy declarations in zooio.h */
