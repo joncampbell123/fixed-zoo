@@ -250,12 +250,12 @@ if (*option == 'g') {
 			zooseek (zoo_file, this_dir_offset, 0);
 
 #ifndef NOSIGNAL
-			oldsignal = signal (SIGINT, SIG_IGN);  /* disable ^C for write */
+			oldsignal = (void*)signal (SIGINT, SIG_IGN);  /* disable ^C for write */
 #endif
 			if (fwr_dir (&direntry, zoo_file) == -1)
 				prterror ('f', "Could not write to archive\n");
 #ifndef NOSIGNAL
-			signal (SIGINT, oldsignal);
+			signal (SIGINT, (sig_t)oldsignal);
 #endif
 			if (action == DEL_UNDEL)
 				prterror ('M', choice ? "deleted\n" : "undeleted\n");

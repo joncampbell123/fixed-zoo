@@ -300,9 +300,9 @@ while (1) {
 
          break_hit = 0;
 #ifndef NOSIGNAL
-         oldsignal = signal (SIGINT, SIG_IGN);
-         if (oldsignal != SIG_IGN)
-            signal (SIGINT, handle_break);
+         oldsignal = (void*)signal (SIGINT, SIG_IGN);
+         if (oldsignal != (void*)SIG_IGN)
+            signal (SIGINT, (sig_t)handle_break);
 #endif
 
 			/* Bug fix thanks to Mark Alexander */

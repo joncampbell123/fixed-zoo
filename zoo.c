@@ -95,26 +95,6 @@ int cmd = NONE;
 	spec_init();							/* system-specific startup code */
 #endif
 
-	/* make sure T_UINT16 is an unsigned 16-bit type, exactly.  This
-		code is included only if T_UINT16 was defined by default at the
-		end of options.h. */
-#ifdef CHECK_TUINT
-	{
-		T_UINT16 i;
-		int status = 0;
-		i = ((unsigned) 1) << 15;
-		if (i < 0)
-			status = 1;
-		if (i != ((unsigned) 1) << 15)
-			status = 1;
-		i *= 2;
-		if (i != 0)
-			status = 1;
-		if (status != 0)
-			prterror('w', "Configuration problem: T_UINT16 is not 16 bits\n");
-	}
-#endif
-
    arg_count = argc;
    arg_vector = argv;
    zooname = argv[FIRST_ARG-1];     /* points to name or archive */

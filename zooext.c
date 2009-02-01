@@ -454,9 +454,9 @@ while (1) {
 #ifndef NOSIGNAL
             if (tofile)
                {
-                  oldsignal = signal (SIGINT, SIG_IGN);
-                  if (oldsignal != SIG_IGN) 
-                     signal (SIGINT, ctrl_c); /* Trap ^C & erase partial file */
+                  oldsignal = (void*)signal (SIGINT, SIG_IGN);
+                  if (oldsignal != (void*)SIG_IGN) 
+                     signal (SIGINT, (sig_t)ctrl_c); /* Trap ^C & erase partial file */
                }
 #endif /* not NOSIGNAL */
 
@@ -507,7 +507,7 @@ while (1) {
 
 #ifndef NOSIGNAL
             if (tofile)
-               signal (SIGINT, oldsignal);
+               signal (SIGINT, (sig_t)oldsignal);
 #endif /* not NOSIGNAL */
 
 #ifdef SETMODE

@@ -50,7 +50,7 @@ unsigned version_no;
    if (lastname >= sz_fentry - 3) {
 		sz_fentry += FENTRY_BSIZE;
 		fentry = (struct item **) 
-			erealloc(fentry, sizeof(struct item *) * sz_fentry);
+			erealloc((VOIDPTR)fentry,(sizeof(struct item *) * sz_fentry));
 	}
 
    fentry[lastname]->fname = str_dup(fname);
