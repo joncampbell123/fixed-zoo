@@ -316,7 +316,7 @@ while (1) {
          } else
             prterror ('f', "Write to temporary packed archive %s failed.\n", temp_file);
 #ifndef NOSIGNAL
-         signal (SIGINT, oldsignal);
+         signal (SIGINT, (sig_t)oldsignal);
 #endif
          if (break_hit)
             zooexit (1);

@@ -202,12 +202,12 @@ ZOOFILE zoo_file;
 {
 #ifndef NOSIGNAL  
    T_SIGNAL (*oldsignal)();
-   oldsignal = signal (SIGINT, SIG_IGN);
+   oldsignal = (void*)signal (SIGINT, (sig_t)SIG_IGN);
 #endif
    if (fwr_dir (direntry, zoo_file) == -1)
       prterror ('f', disk_full);
 #ifndef NOSIGNAL
-   signal (SIGINT, oldsignal);
+   signal (SIGINT, (sig_t)oldsignal);
 #endif
 }
 
@@ -348,12 +348,12 @@ int length;
    else
       newentry.dirlen = newentry.namlen = 0;
 #ifndef NOSIGNAL
-   oldsignal = signal (SIGINT, SIG_IGN);
+   oldsignal = (void*)signal (SIGINT, (sig_t)SIG_IGN);
 #endif
    if (fwr_dir (&newentry, file) == -1)
       prterror ('f', disk_full);
 #ifndef NOSIGNAL
-   signal (SIGINT, oldsignal);
+   signal (SIGINT, (sig_t)oldsignal);
 #endif
 }
 

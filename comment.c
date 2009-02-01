@@ -120,11 +120,11 @@ while (1) {
       get_comment (&direntry, zoo_file, whichname);
       zooseek (zoo_file, this_dir_offset, 0);
 #ifndef NOSIGNAL
-      oldsignal = signal (SIGINT, SIG_IGN);
+      oldsignal = (void*)signal (SIGINT, (sig_t)SIG_IGN);
 #endif
       fwr_dir (&direntry, zoo_file);
 #ifndef NOSIGNAL
-      signal (SIGINT, oldsignal);
+      signal (SIGINT, (sig_t)oldsignal);
 #endif
    }
    zooseek (zoo_file, next_ptr, 0);   /* ..seek to next dir entry */
