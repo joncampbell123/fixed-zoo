@@ -16,11 +16,8 @@
 
 
 MAKE = make	      # needed for some systems e.g. older BSD
-
 CC = gcc
 CFLAGS = -c -DGENERIC -DANSI_HDRS -DSTDARG -DBIG_MEM -DNDEBUG -Os -fomit-frame-pointer -fexpensive-optimizations -g0
-EXTRA = 
-DESTDIR = /usr/bin
 
 #List of all object files created for Zoo
 ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
@@ -33,7 +30,7 @@ ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
 FIZOBJS = fiz.o addbfcrc.o portable.o crcdefs.o
 
 .c.o :
-	$(CC) $(CFLAGS) $(EXTRA) $*.c
+	$(CC) $(CFLAGS) $*.c
 
 all : zoo fiz
 
